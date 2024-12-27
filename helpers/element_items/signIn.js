@@ -11,6 +11,9 @@ export function signInHelpers (){
         },
         signInSubmit:()=>{
             return "[id='signInSubmit']"
+        },
+        thereWasaProblemBox:()=>{
+            return "[class='a-alert-heading']"
         }
     })
 }
