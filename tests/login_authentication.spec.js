@@ -12,15 +12,15 @@ test('Validate a valid username & password successfully logs in and redirects to
   // Click on the Sign In button
   await page.locator(homePage.signInSignUpLink()).click()
   // Enter A Valid Email and Password
-  await page.waitForLoadState('domcontentloaded')
+  await page.waitForSelector(signInPage.emailField())
   await page.locator(signInPage.emailField()).fill("")
   await page.locator(signInPage.continueButton()).last().click()
-  await page.waitForLoadState('domcontentloaded')
+  await page.waitForSelector(signInPage.passwordField())
   await page.locator(signInPage.passwordField()).fill('')
   // Click Submit
   await page.locator(signInPage.signInSubmit()).click()
-  await page.waitForLoadState('domcontentloaded')
-  // Very page redirects to homepage
+  await page.waitForNavigation({waitUntil:'domcontentloaded'})
+  // Verify page redirects to homepage
   await expect(page).toHaveURL("https://www.amazon.com/?ref_=nav_ya_signin")
 });
 
