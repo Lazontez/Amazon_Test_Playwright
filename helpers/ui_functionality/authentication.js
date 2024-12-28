@@ -34,9 +34,15 @@ export function authentication(page) {
             // Click Submit
             await page.locator(signInPage.continueButton()).last().click()
             await page.waitForSelector(signInPage.thereWasaProblemBox())
+        }, 
+        incorrectPassword: async()=>{
+            // Find Field 
+            await page.waitForSelector(signInPage.passwordField())
+            await page.locator(signInPage.passwordField()).fill("NoWayJose123901@")
+            // Click Submit
+            await page.locator(signInPage.signInSubmit()).click()
+            await page.waitForSelector(signInPage.thereWasaProblemBox())
 
-            
-            // Verify the error message appears
         }
     })
 }
