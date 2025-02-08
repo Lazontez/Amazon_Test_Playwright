@@ -24,9 +24,6 @@ export function signInHelpers (){
         createNewAccountButton:()=>{
             return "[id='createAccountSubmit']"
         },
-        continueButton:()=>{
-            return "[id='continue']"
-        },
         reCaptchaId:()=>{
             return "[id='aacb-captcha-header']"
         }
