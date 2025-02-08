@@ -6,14 +6,29 @@ export function signInHelpers (){
         continueButton:()=>{
             return "[id='continue']"
         },
+        customerNameField:()=>{
+            return "[id='ap_customer_name']"
+        },
         passwordField:()=>{
             return "[id='ap_password']"
+        },
+        confirmPasswordField:()=>{
+            return "[id='ap_password_check']"
         },
         signInSubmit:()=>{
             return "[id='signInSubmit']"
         },
         thereWasaProblemBox:()=>{
             return "[class='a-alert-heading']"
+        }, 
+        createNewAccountButton:()=>{
+            return "[id='createAccountSubmit']"
+        },
+        continueButton:()=>{
+            return "[id='continue']"
+        },
+        reCaptchaId:()=>{
+            return "[id='aacb-captcha-header']"
         }
     })
 }

@@ -20,7 +20,7 @@ test('Validate an invalid email & password displays error', async ({page}) =>{
   // Enter invalid email and. Cbeck Error and Enter Correct Email
   await auth.incorrectEmail()
   await expect(page.getByText('We cannot find an account with that email address')).toBeVisible()
-  await page.locator(signInPage.emailField()).fill("darenchanelei@gmail.com")
+  await page.locator(signInPage.emailField()).fill("")
   // Click Continue Button
   await page.locator(signInPage.continueButton()).last().click()
   // Click Submit
@@ -28,7 +28,7 @@ test('Validate an invalid email & password displays error', async ({page}) =>{
   // Verify the error message appears
   await expect(page.getByText('Your password is incorrect')).toBeVisible()
   // Correcting Password and submitting
-  await page.locator(signInPage.passwordField()).fill("ky_4D:6jfUKx8An")
+  await page.locator(signInPage.passwordField()).fill("")
   // Click Submit
   await page.locator(signInPage.signInSubmit()).click()
   await page.waitForNavigation({ waitUntil: 'domcontentloaded' });
@@ -36,3 +36,8 @@ test('Validate an invalid email & password displays error', async ({page}) =>{
   await expect(page).toHaveURL("https://www.amazon.com/?ref_=nav_ya_signin")
 
 });
+test('Validate a new user can register successfully with all required fields entered correctly', async({page})=>{
+  const auth = await authentication(page)
+  await auth.registerNewAccount()
+  await expect(page).toHaveURL(/https:\/\/www\.amazon\.com\/ap\/cvf\/request\?arb=[0-9a-fA-F-]+/);
+})
