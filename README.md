@@ -7,4 +7,6 @@
     - Valid Password
     - Invalid Password
     - Register A New Account
+    - Register With A Duplicate Email
+    - Forgot Password
 

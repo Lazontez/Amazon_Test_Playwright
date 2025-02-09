@@ -47,4 +47,10 @@ test('Validate a new user can register successfully with all required fields ent
   await auth.registerNewAccount()
     // Verify recaptcha is triggered
   await expect(page).toHaveURL(/https:\/\/www\.amazon\.com\/ap\/cvf\/request\?arb=[0-9a-fA-F-]+/);
+});
+test('Validate attempt to register an email or username that already exists', async({page})=>{
+  const auth = await authentication(page);
+  await auth.registerDuplicateEmail();
+  const duplicateEmailMsg = await page.getByText('There\'s already an account')
+  await expect(duplicateEmailMsg).toBeVisible({visible:true})
 })

@@ -58,6 +58,19 @@ export function authentication(page) {
               await page.locator(signInPage.confirmPasswordField()).fill(process.env.Amazon_Password);
               await page.locator(signInPage.continueButton()).click()
               await page.waitForNavigation({ waitUntil: 'networkidle' }); 
+        }, 
+        registerDuplicateEmail: async()=>{
+            await page.locator(homePage.signInSignUpLink()).click()
+            await page.waitForSelector(signInPage.createNewAccountButton())
+            await page.locator((signInPage.createNewAccountButton())).click()
+            const createAccountHeading = await page.getByText('Create account')
+            await expect(createAccountHeading).toBeVisible();
+            await page.locator(signInPage.customerNameField()).fill('William Doe');
+            await page.locator(signInPage.emailField()).fill(process.env.Amazon_Email);
+            await page.locator(signInPage.passwordField()).fill(process.env.Amazon_Password);
+            await page.locator(signInPage.confirmPasswordField()).fill(process.env.Amazon_Password);
+            await page.locator(signInPage.continueButton()).click()
+            
         }
     })
 }
