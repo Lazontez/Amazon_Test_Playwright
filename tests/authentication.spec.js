@@ -2,13 +2,13 @@
 const { test, expect } = require('@playwright/test');
 import { signInHelpers } from '../helpers/element_items/signIn.js';
 const signInPage = signInHelpers()
-import {authentication}  from '../helpers/ui_functionality/authentication.js'
+import { authentication } from '../helpers/ui_functionality/authentication.js'
 const dotenv = require('dotenv')
 dotenv.config()
 
-test.beforeEach(async({page})=>{  
+test.beforeEach(async ({ page }) => {
   await page.goto('https://www.amazon.com/');
-}) 
+})
 test('Validate a valid username & password successfully logs in and redirects to homepage', async ({ page }) => {
   const auth = await authentication(page)
   await auth.login()
@@ -16,9 +16,9 @@ test('Validate a valid username & password successfully logs in and redirects to
   const currentUrl = page.url();
   expect(currentUrl).toMatch(
     /https:\/\/www\.amazon\.com\/ap\/cvf\/request\?arb=[0-9a-fA-F-]+|https:\/\/www\.amazon\.com\/\?ref_=nav_ya_signin/
-);
+  );
 });
-test('Validate an invalid email & password displays error', async ({page}) =>{
+test('Validate an invalid email & password displays error', async ({ page }) => {
   const auth = await authentication(page)
   // Enter invalid email and. Cbeck Error and Enter Correct Email
   await auth.incorrectEmail()
@@ -39,18 +39,22 @@ test('Validate an invalid email & password displays error', async ({page}) =>{
   const currentUrl = page.url();
   expect(currentUrl).toMatch(
     /https:\/\/www\.amazon\.com\/ap\/cvf\/request\?arb=[0-9a-fA-F-]+|https:\/\/www\.amazon\.com\/\?ref_=nav_ya_signin/
-);
+  );
 
 });
-test('Validate a new user can register successfully with all required fields entered correctly', async({page})=>{
+test('Validate a new user can register successfully with all required fields entered correctly', async ({ page }) => {
   const auth = await authentication(page)
   await auth.registerNewAccount()
-    // Verify recaptcha is triggered
+  // Verify recaptcha is triggered
   await expect(page).toHaveURL(/https:\/\/www\.amazon\.com\/ap\/cvf\/request\?arb=[0-9a-fA-F-]+/);
 });
-test('Validate attempt to register an email or username that already exists', async({page})=>{
+test('Validate attempt to register an email or username that already exists', async ({ page }) => {
   const auth = await authentication(page);
   await auth.registerDuplicateEmail();
   const duplicateEmailMsg = await page.getByText('There\'s already an account')
-  await expect(duplicateEmailMsg).toBeVisible({visible:true})
+  await expect(duplicateEmailMsg).toBeVisible({ visible: true })
 })
+test("Validate password reset flow", async ({ page }) => {
+  const auth = await authentication(page)
+  await auth.resetPasswordTrigger();
+})  

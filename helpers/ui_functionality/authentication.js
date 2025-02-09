@@ -26,7 +26,7 @@ export function authentication(page) {
             await page.waitForNavigation({ waitUntil: 'domcontentloaded' })
 
         },
-        incorrectEmail: async () => {        
+        incorrectEmail: async () => {
             // Click Sign In
             await page.locator(homePage.signInSignUpLink()).click()
             // Enter invalid email
@@ -35,8 +35,8 @@ export function authentication(page) {
             // Click Submit
             await page.locator(signInPage.continueButton()).last().click()
             await page.waitForSelector(signInPage.thereWasaProblemBox())
-        }, 
-        incorrectPassword: async()=>{
+        },
+        incorrectPassword: async () => {
             // Find Field 
             await page.waitForSelector(signInPage.passwordField())
             await page.locator(signInPage.passwordField()).fill("NoWayJose123901@")
@@ -45,21 +45,21 @@ export function authentication(page) {
             await page.waitForSelector(signInPage.thereWasaProblemBox())
 
         },
-        registerNewAccount: async()=>{
-              // Click on the Sign In button
-              await page.locator(homePage.signInSignUpLink()).click()
-              await page.waitForSelector(signInPage.createNewAccountButton())
-              await page.locator((signInPage.createNewAccountButton())).click()
-              const createAccountHeading = await page.getByText('Create account')
-              await expect(createAccountHeading).toBeVisible();
-              await page.locator(signInPage.customerNameField()).fill('Johnathon Doe');
-              await page.locator(signInPage.emailField()).fill(dataGenerator.newEmail());
-              await page.locator(signInPage.passwordField()).fill(process.env.Amazon_Password);
-              await page.locator(signInPage.confirmPasswordField()).fill(process.env.Amazon_Password);
-              await page.locator(signInPage.continueButton()).click()
-              await page.waitForNavigation({ waitUntil: 'networkidle' }); 
-        }, 
-        registerDuplicateEmail: async()=>{
+        registerNewAccount: async () => {
+            // Click on the Sign In button
+            await page.locator(homePage.signInSignUpLink()).click()
+            await page.waitForSelector(signInPage.createNewAccountButton())
+            await page.locator((signInPage.createNewAccountButton())).click()
+            const createAccountHeading = await page.getByText('Create account')
+            await expect(createAccountHeading).toBeVisible();
+            await page.locator(signInPage.customerNameField()).fill('Johnathon Doe');
+            await page.locator(signInPage.emailField()).fill(dataGenerator.newEmail());
+            await page.locator(signInPage.passwordField()).fill(process.env.Amazon_Password);
+            await page.locator(signInPage.confirmPasswordField()).fill(process.env.Amazon_Password);
+            await page.locator(signInPage.continueButton()).click()
+            await page.waitForNavigation({ waitUntil: 'networkidle' });
+        },
+        registerDuplicateEmail: async () => {
             await page.locator(homePage.signInSignUpLink()).click()
             await page.waitForSelector(signInPage.createNewAccountButton())
             await page.locator((signInPage.createNewAccountButton())).click()
@@ -70,7 +70,20 @@ export function authentication(page) {
             await page.locator(signInPage.passwordField()).fill(process.env.Amazon_Password);
             await page.locator(signInPage.confirmPasswordField()).fill(process.env.Amazon_Password);
             await page.locator(signInPage.continueButton()).click()
-            
+
+        },
+        resetPasswordTrigger: async () => {
+            await page.locator(homePage.signInSignUpLink()).click();
+            const signInHeader = await page.getByRole('heading', { name: 'Sign in' });
+            await expect(signInHeader).toBeVisible({ visible: true });
+            await page.getByRole('button', { name: 'Need help?' }).click()
+            const ForgotPasswordBtn = await page.getByRole('link', { name: 'Forgot your password?' })
+            await expect(ForgotPasswordBtn).toBeVisible({ visible: true })
+            await ForgotPasswordBtn.click()
+            const resetPasswordHeader = await page.getByRole('heading', { name: 'Password assistance' });
+            await expect(resetPasswordHeader).toBeVisible();
+            await page.locator(signInPage.emailField()).fill(process.env.Amazon_Email);
+            await page.locator(signInPage.continueButton()).click()
         }
     })
 }

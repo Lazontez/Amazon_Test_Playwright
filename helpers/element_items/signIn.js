@@ -26,9 +26,6 @@ export function signInHelpers (){
         },
         reCaptchaId:()=>{
             return "[id='aacb-captcha-header']"
-        },
-        duplicateEmailMsg:()=>{
-            return "[class='a-alert-content']"
         }
     })
 }
