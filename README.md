@@ -1,12 +1,37 @@
 # Amazon_Test_Playwright
- - This project is test suite Amazon's eccomerce site using playwright.
+
+- This project is a test suite for Amazon's e-commerce site using Playwright.
 
 ## Functionality Tested
 
-- Login and Authentication
+- **Login and Authentication**
     - Valid Password
     - Invalid Password
-    - Register A New Account
-    - Register With A Duplicate Email
+    - Register a New Account
+    - Register with a Duplicate Email
     - Forgot Password
+
+## Future Test Cases
+
+- **Search & Navigation**
+    - Search for a Product and Verify Results
+    - Validate Search Suggestions
+    - Filter Products by Category
+    
+- **Shopping Cart & Checkout**
+    - Add a Product to the Cart
+    - Remove a Product from the Cart
+    - Update Item Quantity in Cart
+    - Validate Checkout Process
+    
+- **User Account & Orders**
+    - Verify Order History
+    - Cancel an Order Before Shipment
+    - Add & Remove Items from Wishlist
+    
+- **Reviews & Ratings**
+    - Submit a Product Review
+    - Verify Display of Product Reviews
+
+
 

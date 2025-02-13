@@ -23,7 +23,7 @@ test('Validate an invalid email & password displays error', async ({ page }) => 
   // Enter invalid email and. Cbeck Error and Enter Correct Email
   await auth.incorrectEmail()
   await expect(page.getByText('We cannot find an account with that email address')).toBeVisible()
-  await page.locator(signInPage.emailField()).fill("")
+  await page.locator(signInPage.emailField()).fill("darenchanelei@gmail.com")
   // Click Continue Button
   await page.locator(signInPage.continueButton()).last().click()
   // Click Submit
@@ -31,7 +31,7 @@ test('Validate an invalid email & password displays error', async ({ page }) => 
   // Verify the error message appears
   await expect(page.getByText('Your password is incorrect')).toBeVisible()
   // Correcting Password and submitting
-  await page.locator(signInPage.passwordField()).fill("")
+  await page.locator(signInPage.passwordField()).fill("ky_4D:6jfUKx8An")
   // Click Submit
   await page.locator(signInPage.signInSubmit()).click()
   await page.waitForNavigation({ waitUntil: 'domcontentloaded' });
@@ -52,7 +52,8 @@ test('Validate attempt to register an email or username that already exists', as
   const auth = await authentication(page);
   await auth.registerDuplicateEmail();
   const duplicateEmailMsg = await page.getByText('There\'s already an account')
-  await expect(duplicateEmailMsg).toBeVisible({ visible: true })
+  await expect(duplicateEmailMsg).toBeVisible({ visible:
+     true })
 })
 test("Validate password reset flow", async ({ page }) => {
   const auth = await authentication(page)
