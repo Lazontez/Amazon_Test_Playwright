@@ -1,7 +1,11 @@
 export function searchpage (){
     return ({
         searchField: ()=>{
-            return "[id='twotabsearchtextbox']"
+            // Will be retrieved by placeholder
+            return "Search Amazon"
+        }, 
+        searchBtn: ()=>{
+            return '[id="nav-search-submit-button"]'
         }
     })
 }
