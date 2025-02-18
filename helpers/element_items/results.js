@@ -2,7 +2,8 @@ export function resultsPage(){
     return(
         {
             moreResults: '[id="nav-search-submit-button"]',
-            productTitle: '[data-cy="title-recipe"]'
+            productTitle: '[data-cy="title-recipe"]',
+            productCard: '[id="product-card"]'
         }
     )
 }

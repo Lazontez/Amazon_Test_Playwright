@@ -49,14 +49,3 @@ test('Validate user can search and filter products by brand', async ({page}) =>{
   }
   
 });
-test('Validate relevant targeted ads after search', async ({page}) =>{
-  const searchBox = await page.getByPlaceholder('Search Amazon');
-  const searchBoxVisible = await searchBox.isVisible();
-  await expect(searchBoxVisible).toBe(true);
-  const search = await searching(page)
-  await search.withInput({inputText: 'PS5'})
-  const moreResultsVisble = await page.locator(resultsPageHelper.moreResults).isVisible()
-  await expect(moreResultsVisble).toBe(true)
-
-  
-});

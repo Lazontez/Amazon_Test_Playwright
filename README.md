@@ -14,12 +14,8 @@
 - **Search & Navigation**
     - Search for a Product and Verify Results
     - Filter Products by Brands
-    - Validate Relevant Targeted Ads after search
-
 ## Future Test Cases
 
-
-    
 - **Shopping Cart & Checkout**
     - Add a Product to the Cart
     - Remove a Product from the Cart
