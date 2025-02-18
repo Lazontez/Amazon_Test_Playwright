@@ -15,7 +15,7 @@ test.beforeEach(async ({ page }) => {
   })
 
 test.afterEach(async({page})=>{
-  page.close()
+  await page.close()
 })
 
 test('Validate search for a product and verify results are displayed on page', async ({page}) =>{
