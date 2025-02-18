@@ -1,7 +1,8 @@
 export function resultsPage(){
     return(
         {
-            moreResults: '[data-component-type="s-search-result"]'
+            moreResults: '[id="nav-search-submit-button"]',
+            productTitle: '[data-cy="title-recipe"]'
         }
     )
 }

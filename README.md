@@ -11,12 +11,14 @@
     - Register with a Duplicate Email
     - Forgot Password
 
+- **Search & Navigation**
+    - Search for a Product and Verify Results
+    - Filter Products by Category
+
 ## Future Test Cases
 
 - **Search & Navigation**
-    - Search for a Product and Verify Results
     - Validate Search Suggestions
-    - Filter Products by Category
     
 - **Shopping Cart & Checkout**
     - Add a Product to the Cart
