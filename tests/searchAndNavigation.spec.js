@@ -14,6 +14,10 @@ test.beforeEach(async ({ page }) => {
     await page.goto('https://www.amazon.com/');
   })
 
+test.afterEach(async({page})=>{
+  page.close()
+})
+
 test('Validate search for a product and verify results are displayed on page', async ({page}) =>{
   const searchBox = await page.getByPlaceholder('Search Amazon');
   const searchBoxVisible = await searchBox.isVisible();
@@ -43,5 +47,16 @@ test('Validate user can search and filter products by brand', async ({page}) =>{
     console.log(`Title Text: ${text}`)
     expect(text).toMatch(brandPattern);
   }
+  
+});
+test('Validate relevant targeted ads after search', async ({page}) =>{
+  const searchBox = await page.getByPlaceholder('Search Amazon');
+  const searchBoxVisible = await searchBox.isVisible();
+  await expect(searchBoxVisible).toBe(true);
+  const search = await searching(page)
+  await search.withInput({inputText: 'PS5'})
+  const moreResultsVisble = await page.locator(resultsPageHelper.moreResults).isVisible()
+  await expect(moreResultsVisble).toBe(true)
+
   
 });

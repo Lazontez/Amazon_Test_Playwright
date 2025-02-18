@@ -13,12 +13,12 @@
 
 - **Search & Navigation**
     - Search for a Product and Verify Results
-    - Filter Products by Category
+    - Filter Products by Brands
+    - Validate Relevant Targeted Ads after search
 
 ## Future Test Cases
 
-- **Search & Navigation**
-    - Validate Search Suggestions
+
     
 - **Shopping Cart & Checkout**
     - Add a Product to the Cart
