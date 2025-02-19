@@ -24,7 +24,6 @@
     
 - **User Account & Orders**
     - Verify Order History
-    - Cancel an Order Before Shipment
     - Add & Remove Items from Wishlist
     
 - **Reviews & Ratings**

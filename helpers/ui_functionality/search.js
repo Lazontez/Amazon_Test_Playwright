@@ -6,11 +6,13 @@ export function searching(page) {
     return {
         withInput: async (searchContents) => {
             let data;
+            let defaultSearch = 'Apple Watch'
+        
             if (!searchContents){
-                data = {
-                    inputText: 'AppleWatch'
-                }
+ 
+                ({ inputText: defaultSearch } = searchContents);
             }
+            
             else{
                 data = searchContents
             }
